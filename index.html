@@ -46,7 +46,6 @@
           <a href="#offer">Offer</a>
           <a href="#build-model">Preview</a>
           <a href="#fit-check">Fit check</a>
-          <a href="#packages">Packages</a>
           <a href="#contact">Contact</a>
         </div>
       </nav>
@@ -68,7 +67,7 @@
           </p>
           <div class="hero-actions" aria-label="Primary actions">
             <a class="button button-primary" href="#contact">Book a free consult</a>
-            <a class="button button-secondary" href="#packages">See starter packages</a>
+            <a class="button button-secondary" href="#fit-check">Try the fit check</a>
           </div>
           <dl class="hero-stats" aria-label="Service highlights">
             <div>
@@ -91,7 +90,7 @@
         <div class="section-grid">
           <div class="section-copy reveal">
             <p class="eyebrow">The offer</p>
-            <h2 id="offer-title">A cleaner path than <span class="text-pop">renting</span> your whole web presence.</h2>
+            <h2 id="offer-title">A <span class="phrase-effect effect-cleaner">cleaner</span> path than <span class="phrase-effect effect-renting">renting</span> your whole <span class="phrase-effect effect-web">web</span> presence.</h2>
             <p>
               I build lean, professional websites for local businesses that need a clear online home: services, photos, reviews, contact forms, and the details customers look for before they call.
             </p>
@@ -167,36 +166,42 @@
         </div>
 
         <form class="fit-tool reveal" data-fit-tool>
-          <fieldset>
+          <fieldset data-fit-choice-group>
             <legend>How many core pages?</legend>
-            <label>
-              <input type="radio" name="pages" value="1" checked>
-              <span>One page</span>
-            </label>
-            <label>
-              <input type="radio" name="pages" value="5">
-              <span>Five pages</span>
-            </label>
-            <label>
-              <input type="radio" name="pages" value="10">
-              <span>Ten pages</span>
-            </label>
+            <div class="fit-options">
+              <span class="fit-choice-slider" aria-hidden="true"></span>
+              <label>
+                <input type="radio" name="pages" value="1" checked>
+                <span>One page</span>
+              </label>
+              <label>
+                <input type="radio" name="pages" value="5">
+                <span>Five pages</span>
+              </label>
+              <label>
+                <input type="radio" name="pages" value="10">
+                <span>Ten pages</span>
+              </label>
+            </div>
           </fieldset>
 
-          <fieldset>
+          <fieldset data-fit-choice-group>
             <legend>What should it do?</legend>
-            <label>
-              <input type="radio" name="complexity" value="static" checked>
-              <span>Inform customers</span>
-            </label>
-            <label>
-              <input type="radio" name="complexity" value="forms">
-              <span>Collect leads</span>
-            </label>
-            <label>
-              <input type="radio" name="complexity" value="dynamic">
-              <span>Run workflows</span>
-            </label>
+            <div class="fit-options">
+              <span class="fit-choice-slider" aria-hidden="true"></span>
+              <label>
+                <input type="radio" name="complexity" value="static" checked>
+                <span>Inform customers</span>
+              </label>
+              <label>
+                <input type="radio" name="complexity" value="forms">
+                <span>Collect leads</span>
+              </label>
+              <label>
+                <input type="radio" name="complexity" value="dynamic">
+                <span>Run workflows</span>
+              </label>
+            </div>
           </fieldset>
 
           <output class="fit-result" data-fit-result for="pages complexity">
@@ -207,52 +212,10 @@
         </form>
       </section>
 
-      <section class="section packages-section" id="packages" aria-labelledby="packages-title">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Starter packages</p>
-          <h2 id="packages-title">Simple choices, <span class="text-pop">honest boundaries</span>.</h2>
-        </div>
-        <div class="package-grid">
-          <article class="package-card reveal" data-tilt>
-            <p class="package-kicker">Best first offer</p>
-            <h3>One-page launch</h3>
-            <p class="price">From $900</p>
-            <ul>
-              <li>Custom responsive landing page</li>
-              <li>Service sections, reviews, gallery, and contact path</li>
-              <li>Basic SEO and analytics setup</li>
-              <li>30-day workmanship warranty</li>
-            </ul>
-          </article>
-          <article class="package-card featured reveal" data-tilt>
-            <p class="package-kicker">Most small businesses</p>
-            <h3>Five-page website</h3>
-            <p class="price">From $1,500</p>
-            <ul>
-              <li>Home, services, about, gallery, and contact pages</li>
-              <li>Contact form routing and launch checklist</li>
-              <li>Domain and hosting guidance</li>
-              <li>Source code transferred after final payment</li>
-            </ul>
-          </article>
-          <article class="package-card reveal" data-tilt>
-            <p class="package-kicker">Optional support</p>
-            <h3>Care plan</h3>
-            <p class="price">$35+/mo</p>
-            <ul>
-              <li>Uptime checks and form testing</li>
-              <li>Small content updates within a set allowance</li>
-              <li>Backup and dependency review when applicable</li>
-              <li>Priority response for existing clients</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
       <section class="section process-section" aria-labelledby="process-title">
         <div class="section-heading reveal">
           <p class="eyebrow">Process</p>
-          <h2 id="process-title">From Facebook message to live website.</h2>
+          <h2 id="process-title">From Facebook <span class="phrase-effect effect-message">message</span> to <span class="phrase-effect effect-live">live</span> website.</h2>
         </div>
         <ol class="process-list">
           <li class="reveal">

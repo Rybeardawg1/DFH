@@ -141,6 +141,7 @@
 
   const fitTool = document.querySelector("[data-fit-tool]");
   const fitResult = document.querySelector("[data-fit-result]");
+  const fitChoiceGroups = fitTool ? fitTool.querySelectorAll("[data-fit-choice-group]") : [];
   const fitData = {
     "1-static": ["One-page launch site", "Typical range: $900-$1,500"],
     "1-forms": ["Lead-focused landing page", "Typical range: $1,100-$1,800"],
@@ -153,8 +154,17 @@
     "10-dynamic": ["Custom workflow platform", "Scoped after discovery"]
   };
 
+  const updateFitSliders = () => {
+    fitChoiceGroups.forEach((group) => {
+      const options = Array.from(group.querySelectorAll('input[type="radio"]'));
+      const activeIndex = Math.max(0, options.findIndex((option) => option.checked));
+      group.style.setProperty("--active-choice", String(activeIndex));
+    });
+  };
+
   const updateFit = () => {
     if (!fitTool || !fitResult) return;
+    updateFitSliders();
     const formData = new FormData(fitTool);
     const key = `${formData.get("pages")}-${formData.get("complexity")}`;
     const [title, range] = fitData[key] || fitData["1-static"];
