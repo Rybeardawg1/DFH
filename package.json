@@ -1,0 +1,18 @@
+{
+  "name": "developer-for-hire-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "One-page website for Developer For Hire.",
+  "scripts": {
+    "start": "node server.js",
+    "serve": "node server.js",
+    "check:syntax": "node --check script.js && node --check scene.mjs && node --check server.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "three": "0.185.1"
+  },
+  "devDependencies": {
+    "playwright-core": "1.61.1"
+  }
+}

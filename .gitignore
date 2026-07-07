@@ -1,0 +1,6 @@
+server.log
+server.err.log
+lighthouse-report.json
+.lighthouseci/
+.tmp/
+node_modules/
