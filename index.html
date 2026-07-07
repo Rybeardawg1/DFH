@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="page-transition">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -45,6 +45,7 @@
         "url": "https://developerforhire.dev/"
       }
     </script>
+    <script src="page-transition.js" defer></script>
     <script src="script.js" defer></script>
     <script type="module" src="scene.mjs"></script>
   </head>
@@ -81,6 +82,7 @@
         <div class="site-menu" id="site-menu" data-menu>
           <a href="#offer">Offer</a>
           <a href="#build-model">Preview</a>
+          <a href="portfolio/index.html">Examples</a>
           <a href="#about">About</a>
           <a href="#fit-check">Fit check</a>
           <a href="#contact">Contact</a>
@@ -100,10 +102,30 @@
           <p class="eyebrow">Local small-business websites</p>
           <h1 id="hero-title">
             <span class="hover-word word-developer" data-text="Developer"
-              >Developer</span
+              >Developer<span class="matrix-streams" aria-hidden="true"
+                ><span class="matrix-stream">101100101101110001011001</span
+                ><span class="matrix-stream">010011101001011100101110</span
+                ><span class="matrix-stream">110100011010010111001011</span
+                ><span class="matrix-stream">001011101101001001110100</span
+                ><span class="matrix-stream">011101001011011100100101</span
+                ><span class="matrix-stream">100110111001010110010111</span
+                ><span class="matrix-stream">111000101101110010100110</span
+                ><span class="matrix-stream"
+                  >010111001101011001011101</span
+                ></span
+              ></span
             >
             <span class="hover-word word-for">For</span>
-            <span class="hover-word word-hire">Hire</span>
+            <span
+              class="hover-word word-hire"
+              data-typewriter-word
+              contenteditable="plaintext-only"
+              spellcheck="false"
+              role="textbox"
+              aria-label="Editable hero word"
+              aria-description="Editable word, 12 character limit"
+              >Hire</span
+            >
           </h1>
           <p class="hero-lede">
             Fast custom websites that your business
@@ -217,6 +239,11 @@
             The work is shaped around your business, then handed over in a way
             that keeps the domain, accounts, content, and code portable.
           </p>
+          <div class="model-actions" aria-label="Portfolio examples">
+            <a class="button button-secondary" href="portfolio/index.html"
+              >View example pages</a
+            >
+          </div>
         </div>
       </section>
 
@@ -229,8 +256,15 @@
           <div class="about-copy reveal">
             <p class="eyebrow">Who am I?</p>
             <h2 id="about-title">
-              Local roots, practical websites, and a soft spot for small
-              businesses.
+              Local
+              <span class="phrase-effect effect-roots"
+                >roots<span class="root-tendrils" aria-hidden="true"
+                  ><span class="root-tendril"></span
+                  ><span class="root-tendril"></span
+                  ><span class="root-tendril"></span
+                  ><span class="root-tendril"></span
+                  ><span class="root-tendril"></span></span></span
+              >, practical websites, and a soft spot for small businesses.
             </h2>
             <p>
               I am Ryan, born and raised in Norwell, MA. I have six years of web
@@ -248,10 +282,15 @@
           <div class="about-side">
             <figure class="about-photo reveal" data-tilt>
               <img
-                src="assets/headshot.webp"
+                src="assets/headshot-640.webp"
+                srcset="
+                  assets/headshot-640.webp 640w,
+                  assets/headshot-960.webp 960w
+                "
+                sizes="(max-width: 940px) calc(100vw - 2rem), 430px"
                 alt="Ryan, the developer behind Developer For Hire"
-                width="1328"
-                height="864"
+                width="960"
+                height="640"
                 loading="lazy"
                 decoding="async"
               />
@@ -356,7 +395,7 @@
           </h2>
         </div>
         <ol class="process-list">
-          <li class="reveal">
+          <li class="reveal" data-tilt>
             <span>01</span>
             <h3>Free consultation</h3>
             <p>
@@ -364,7 +403,7 @@
               and whether the project should be static or dynamic.
             </p>
           </li>
-          <li class="reveal">
+          <li class="reveal" data-tilt>
             <span>02</span>
             <h3>Fixed scope</h3>
             <p>
@@ -372,7 +411,7 @@
               list of what is included before work begins.
             </p>
           </li>
-          <li class="reveal">
+          <li class="reveal" data-tilt>
             <span>03</span>
             <h3>Build and launch</h3>
             <p>

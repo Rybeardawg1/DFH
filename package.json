@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "serve": "node server.js",
-    "check:syntax": "node --check script.js && node --check scene.mjs && node --check server.js"
+    "check:syntax": "node --check script.js && node --check page-transition.js && node --check scene.mjs && node --check server.js"
   },
   "license": "MIT",
   "dependencies": {

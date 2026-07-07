@@ -157,6 +157,8 @@
           const y = (event.clientY - rect.top) / rect.height - 0.5;
           item.style.setProperty("--tilt-x", `${(-y * 5).toFixed(2)}deg`);
           item.style.setProperty("--tilt-y", `${(x * 6).toFixed(2)}deg`);
+          item.style.setProperty("--tilt-shift-x", `${(-x * 12).toFixed(2)}px`);
+          item.style.setProperty("--tilt-shift-y", `${(-y * 10).toFixed(2)}px`);
         },
         { passive: true }
       );
@@ -164,7 +166,259 @@
       item.addEventListener("pointerleave", () => {
         item.style.setProperty("--tilt-x", "0deg");
         item.style.setProperty("--tilt-y", "0deg");
+        item.style.setProperty("--tilt-shift-x", "0px");
+        item.style.setProperty("--tilt-shift-y", "0px");
       });
+    });
+  }
+
+  const developerWord = document.querySelector(".word-developer");
+  const matrixStreams = developerWord
+    ? Array.from(developerWord.querySelectorAll(".matrix-stream"))
+    : [];
+  const matrixChars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&*+-/:;<=>?[]{}";
+  let matrixInterval = 0;
+
+  const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+  const randomMatrixText = (length = randomInt(22, 34)) =>
+    Array.from({ length }, () => matrixChars[randomInt(0, matrixChars.length - 1)]).join("");
+
+  const mutateMatrixText = (text) => {
+    const chars = text.split("");
+    const mutations = randomInt(2, 5);
+    for (let index = 0; index < mutations; index += 1) {
+      chars[randomInt(0, chars.length - 1)] = matrixChars[randomInt(0, matrixChars.length - 1)];
+    }
+    return chars.join("");
+  };
+
+  const randomizeMatrixStreams = () => {
+    matrixStreams.forEach((stream) => {
+      stream.textContent = randomMatrixText();
+      stream.style.setProperty("--stream-speed", `${randomInt(1800, 3600)}ms`);
+      stream.style.setProperty("--stream-delay", `${randomInt(-2200, 0)}ms`);
+      stream.style.setProperty("--stream-drift", `${randomInt(-6, 6)}px`);
+    });
+  };
+
+  const startMatrixRandomizer = () => {
+    if (!matrixStreams.length || prefersReducedMotion.matches) return;
+    window.clearInterval(matrixInterval);
+    randomizeMatrixStreams();
+    matrixInterval = window.setInterval(() => {
+      matrixStreams.forEach((stream) => {
+        stream.textContent = mutateMatrixText(stream.textContent || randomMatrixText());
+      });
+    }, 150);
+  };
+
+  const stopMatrixRandomizer = () => {
+    window.clearInterval(matrixInterval);
+    matrixInterval = 0;
+  };
+
+  if (developerWord && matrixStreams.length) {
+    randomizeMatrixStreams();
+    developerWord.addEventListener("pointerenter", startMatrixRandomizer);
+    developerWord.addEventListener("pointerleave", stopMatrixRandomizer);
+    prefersReducedMotion.addEventListener("change", (event) => {
+      if (event.matches) stopMatrixRandomizer();
+    });
+  }
+
+  const hireWord = document.querySelector("[data-typewriter-word]");
+  const hireDefault = "Hire";
+  const hireWords = [hireDefault, "You", "Web", "Help"];
+  const hireMaxLength = 12;
+  let hireTypewriterToken = 0;
+  let hireCycleTimer = 0;
+  let hireWordIndex = 0;
+  let hireCycleComplete = false;
+  let hireUserEdited = false;
+
+  const cleanHireWord = () => {
+    if (!hireWord) return;
+    hireWord.textContent = String(hireWord.textContent || "")
+      .replace(/\s+/g, "")
+      .slice(0, hireMaxLength);
+  };
+
+  const getHireText = () => String(hireWord ? hireWord.textContent || "" : "");
+
+  const syncHireEmptyState = () => {
+    if (!hireWord) return;
+    hireWord.dataset.empty = String(!getHireText());
+  };
+
+  const getHireSelectionLength = () => {
+    if (!hireWord || !window.getSelection) return 0;
+    const selection = window.getSelection();
+    if (!selection.rangeCount) return 0;
+    const range = selection.getRangeAt(0);
+    if (
+      !hireWord.contains(range.commonAncestorContainer) &&
+      range.commonAncestorContainer !== hireWord
+    ) {
+      return 0;
+    }
+    return range.toString().length;
+  };
+
+  const setHireCaretToCursor = () => {
+    if (!hireWord || !window.getSelection || !document.createRange) return;
+    const range = document.createRange();
+    const selection = window.getSelection();
+    if (getHireText()) {
+      range.selectNodeContents(hireWord);
+      range.collapse(false);
+    } else {
+      range.setStart(hireWord, 0);
+      range.collapse(true);
+    }
+    selection.removeAllRanges();
+    selection.addRange(range);
+  };
+
+  const queueHireCaretToCursor = () => {
+    window.requestAnimationFrame(setHireCaretToCursor);
+  };
+
+  const wait = (delay) =>
+    new Promise((resolve) => {
+      window.setTimeout(resolve, delay);
+    });
+
+  const typeHireWord = async (target) => {
+    if (
+      !hireWord ||
+      hireUserEdited ||
+      prefersReducedMotion.matches ||
+      document.activeElement === hireWord
+    ) {
+      return false;
+    }
+    const token = (hireTypewriterToken += 1);
+    hireWord.dataset.typing = "true";
+    syncHireEmptyState();
+    while (
+      getHireText() &&
+      token === hireTypewriterToken &&
+      !hireUserEdited &&
+      document.activeElement !== hireWord
+    ) {
+      hireWord.textContent = getHireText().slice(0, -1);
+      syncHireEmptyState();
+      await wait(58);
+    }
+    for (const letter of target) {
+      if (token !== hireTypewriterToken || hireUserEdited || document.activeElement === hireWord) {
+        break;
+      }
+      hireWord.textContent += letter;
+      syncHireEmptyState();
+      await wait(84 + randomInt(0, 34));
+    }
+    if (token === hireTypewriterToken) {
+      delete hireWord.dataset.typing;
+    }
+    return token === hireTypewriterToken && !hireUserEdited;
+  };
+
+  const stopHireTypewriter = () => {
+    window.clearTimeout(hireCycleTimer);
+    hireCycleTimer = 0;
+    hireTypewriterToken += 1;
+    if (hireWord) delete hireWord.dataset.typing;
+  };
+
+  const scheduleHireCycle = (delay = 1300) => {
+    window.clearTimeout(hireCycleTimer);
+    if (!hireWord || hireUserEdited || hireCycleComplete || prefersReducedMotion.matches) return;
+    hireCycleTimer = window.setTimeout(async () => {
+      if (hireUserEdited || document.activeElement === hireWord) return;
+      hireWordIndex += 1;
+      if (hireWordIndex >= hireWords.length) {
+        hireWordIndex = 0;
+        hireCycleComplete = true;
+      }
+      const completed = await typeHireWord(hireWords[hireWordIndex]);
+      if (completed && !hireUserEdited && !hireCycleComplete) scheduleHireCycle(1250);
+    }, delay);
+  };
+
+  const enforceHireLimit = (event) => {
+    if (!hireWord || event.inputType.startsWith("delete")) return;
+    const currentLength = getHireText().length;
+    const pasted = event.dataTransfer ? event.dataTransfer.getData("text/plain") : "";
+    const incoming = String(event.data || pasted || "");
+    const nextLength = currentLength - getHireSelectionLength() + incoming.length;
+    if (nextLength > hireMaxLength) {
+      event.preventDefault();
+    }
+  };
+
+  if (hireWord) {
+    hireWord.addEventListener("pointerdown", (event) => {
+      event.preventDefault();
+      hireUserEdited = true;
+      stopHireTypewriter();
+      hireWord.focus({ preventScroll: true });
+      setHireCaretToCursor();
+    });
+
+    hireWord.addEventListener("focus", () => {
+      hireUserEdited = true;
+      stopHireTypewriter();
+      syncHireEmptyState();
+      queueHireCaretToCursor();
+    });
+
+    hireWord.addEventListener("click", queueHireCaretToCursor);
+
+    hireWord.addEventListener("beforeinput", enforceHireLimit);
+
+    hireWord.addEventListener("input", () => {
+      hireUserEdited = true;
+      if (getHireText().length > hireMaxLength) {
+        cleanHireWord();
+        setHireCaretToCursor();
+      }
+      syncHireEmptyState();
+    });
+
+    hireWord.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        hireWord.blur();
+      }
+    });
+
+    hireWord.addEventListener("blur", () => {
+      cleanHireWord();
+      if (!hireWord.textContent) {
+        hireWord.textContent = hireDefault;
+        hireUserEdited = false;
+        hireWordIndex = 0;
+        hireCycleComplete = false;
+        scheduleHireCycle();
+      }
+      syncHireEmptyState();
+    });
+
+    if (prefersReducedMotion.matches) {
+      hireWord.textContent = hireDefault;
+    } else {
+      scheduleHireCycle(900);
+    }
+    syncHireEmptyState();
+
+    prefersReducedMotion.addEventListener("change", (event) => {
+      stopHireTypewriter();
+      if (!event.matches && !hireUserEdited) {
+        hireCycleComplete = false;
+        scheduleHireCycle();
+      }
     });
   }
 
