@@ -14,6 +14,20 @@
     <meta property="og:type" content="website">
     <link rel="canonical" href="https://developerforhire.dev/">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <script>
+      try {
+        const savedTheme = localStorage.getItem("dfh-theme");
+        const systemTheme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        const theme = savedTheme || systemTheme;
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+        document
+          .querySelector('meta[name="theme-color"]')
+          ?.setAttribute("content", theme === "dark" ? "#0b1117" : "#fbfaf7");
+      } catch (error) {
+        document.documentElement.dataset.theme = "light";
+      }
+    </script>
     <link rel="stylesheet" href="styles.css">
     <script type="application/ld+json">
       {
@@ -38,13 +52,19 @@
           <span class="brand-mark" aria-hidden="true">DFH</span>
           <span>Developer For Hire</span>
         </a>
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-nav-toggle>
-          <span class="nav-toggle-lines" aria-hidden="true"></span>
-          <span class="sr-only">Open menu</span>
-        </button>
+        <div class="nav-actions">
+          <button class="theme-toggle" type="button" aria-label="Use dark theme" aria-pressed="false" data-theme-toggle>
+            <span class="theme-toggle-icon" aria-hidden="true"></span>
+          </button>
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-nav-toggle>
+            <span class="nav-toggle-lines" aria-hidden="true"></span>
+            <span class="sr-only">Open menu</span>
+          </button>
+        </div>
         <div class="site-menu" id="site-menu" data-menu>
           <a href="#offer">Offer</a>
           <a href="#build-model">Preview</a>
+          <a href="#about">About</a>
           <a href="#fit-check">Fit check</a>
           <a href="#contact">Contact</a>
         </div>
@@ -58,9 +78,9 @@
         <div class="hero-content">
           <p class="eyebrow">Local small-business websites</p>
           <h1 id="hero-title">
-            <span class="hover-word">Developer</span>
-            <span class="hover-word">For</span>
-            <span class="hover-word">Hire</span>
+            <span class="hover-word word-developer" data-text="Developer">Developer</span>
+            <span class="hover-word word-for">For</span>
+            <span class="hover-word word-hire">Hire</span>
           </h1>
           <p class="hero-lede">
             Fast custom websites that your business <span class="text-pop">actually owns</span>. No mandatory monthly developer subscription for simple static sites.
@@ -149,10 +169,39 @@
         <div class="model-shade" aria-hidden="true"></div>
         <div class="model-content reveal">
           <p class="eyebrow">Interactive build preview</p>
-          <h2 id="model-title">Custom sites should feel <span class="text-pop">handmade</span>, not templated.</h2>
+          <h2 id="model-title">Custom sites should feel <span class="text-pop handmade-pop">handmade<span class="handmade-prints" aria-hidden="true"><span class="handmade-print"></span><span class="handmade-print"></span><span class="handmade-print"></span></span></span>, not templated.</h2>
           <p>
             The work is shaped around your business, then handed over in a way that keeps the domain, accounts, content, and code portable.
           </p>
+        </div>
+      </section>
+
+      <section class="section about-section" id="about" aria-labelledby="about-title">
+        <div class="about-grid">
+          <div class="about-copy reveal">
+            <p class="eyebrow">Who am I?</p>
+            <h2 id="about-title">Local roots, practical websites, and a soft spot for small businesses.</h2>
+            <p>
+              I am Ryan, born and raised in Norwell, MA. I have six years of web development experience and currently work as a data engineer for Avidia Bank. I have always loved graphic design, tinkering with technology, and helping people make sense of the tools their business depends on.
+            </p>
+            <p>
+              Developer For Hire is my way to support local small businesses with practical websites, honest technical guidance, and ownership that does not disappear into a black box.
+            </p>
+          </div>
+          <div class="about-notes reveal" aria-label="Working style">
+            <article data-tilt>
+              <span>Local perspective</span>
+              <p>I know the South Shore small-business world, and I care about work that feels useful to the community around me.</p>
+            </article>
+            <article data-tilt>
+              <span>Design plus engineering</span>
+              <p>I like the visual polish, the technical details, and the quiet decisions that make a site fast, clear, and easy to own.</p>
+            </article>
+            <article data-tilt>
+              <span>Plain-English help</span>
+              <p>No mystery stack or vague platform talk. I explain what you need, what you do not, and what each choice means.</p>
+            </article>
+          </div>
         </div>
       </section>
 

@@ -3,10 +3,58 @@
 
   const contactEmail = "hello@developerforhire.dev";
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
 
   const header = document.querySelector("[data-header]");
   const navToggle = document.querySelector("[data-nav-toggle]");
   const menu = document.querySelector("[data-menu]");
+  const themeToggle = document.querySelector("[data-theme-toggle]");
+
+  const getSavedTheme = () => {
+    try {
+      return localStorage.getItem("dfh-theme");
+    } catch (error) {
+      return null;
+    }
+  };
+
+  const saveTheme = (theme) => {
+    try {
+      localStorage.setItem("dfh-theme", theme);
+    } catch (error) {
+      // Theme storage is optional; the visual state still updates.
+    }
+  };
+
+  const applyTheme = (theme, persist = false) => {
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    if (metaTheme) {
+      metaTheme.setAttribute("content", theme === "dark" ? "#0b1117" : "#fbfaf7");
+    }
+    if (themeToggle) {
+      const dark = theme === "dark";
+      themeToggle.setAttribute("aria-pressed", String(dark));
+      themeToggle.setAttribute("aria-label", dark ? "Use light theme" : "Use dark theme");
+    }
+    if (persist) saveTheme(theme);
+  };
+
+  applyTheme(getSavedTheme() || (prefersDark.matches ? "dark" : "light"));
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const current = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+      applyTheme(current === "dark" ? "light" : "dark", true);
+    });
+  }
+
+  prefersDark.addEventListener("change", (event) => {
+    if (!getSavedTheme()) {
+      applyTheme(event.matches ? "dark" : "light");
+    }
+  });
 
   const closeMenu = () => {
     if (!navToggle || !menu) return;
