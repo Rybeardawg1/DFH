@@ -1,23 +1,28 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Developer For Hire | Fast Websites Small Businesses Own</title>
     <meta
       name="description"
       content="Developer For Hire builds fast custom websites for local small businesses, with client-owned code, domains, and optional ongoing support."
-    >
-    <meta name="theme-color" content="#0f172a">
-    <meta property="og:title" content="Developer For Hire">
-    <meta property="og:description" content="Fast custom websites that small businesses actually own.">
-    <meta property="og:type" content="website">
-    <link rel="canonical" href="https://developerforhire.dev/">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    />
+    <meta name="theme-color" content="#0f172a" />
+    <meta property="og:title" content="Developer For Hire" />
+    <meta
+      property="og:description"
+      content="Fast custom websites that small businesses actually own."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://developerforhire.dev/" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <script>
       try {
         const savedTheme = localStorage.getItem("dfh-theme");
-        const systemTheme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        const systemTheme = matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
         const theme = savedTheme || systemTheme;
         document.documentElement.dataset.theme = theme;
         document.documentElement.style.colorScheme = theme;
@@ -28,7 +33,7 @@
         document.documentElement.dataset.theme = "light";
       }
     </script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -53,10 +58,22 @@
           <span>Developer For Hire</span>
         </a>
         <div class="nav-actions">
-          <button class="theme-toggle" type="button" aria-label="Use dark theme" aria-pressed="false" data-theme-toggle>
+          <button
+            class="theme-toggle"
+            type="button"
+            aria-label="Use dark theme"
+            aria-pressed="false"
+            data-theme-toggle
+          >
             <span class="theme-toggle-icon" aria-hidden="true"></span>
           </button>
-          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-nav-toggle>
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="site-menu"
+            data-nav-toggle
+          >
             <span class="nav-toggle-lines" aria-hidden="true"></span>
             <span class="sr-only">Open menu</span>
           </button>
@@ -73,21 +90,33 @@
 
     <main id="main">
       <section class="hero" id="top" aria-labelledby="hero-title">
-        <canvas class="hero-canvas" data-hero-canvas aria-hidden="true"></canvas>
+        <canvas
+          class="hero-canvas"
+          data-hero-canvas
+          aria-hidden="true"
+        ></canvas>
         <div class="hero-glow" aria-hidden="true"></div>
         <div class="hero-content">
           <p class="eyebrow">Local small-business websites</p>
           <h1 id="hero-title">
-            <span class="hover-word word-developer" data-text="Developer">Developer</span>
+            <span class="hover-word word-developer" data-text="Developer"
+              >Developer</span
+            >
             <span class="hover-word word-for">For</span>
             <span class="hover-word word-hire">Hire</span>
           </h1>
           <p class="hero-lede">
-            Fast custom websites that your business <span class="text-pop">actually owns</span>. No mandatory monthly developer subscription for simple static sites.
+            Fast custom websites that your business
+            <span class="text-pop">actually owns</span>. No mandatory monthly
+            developer subscription for simple static sites.
           </p>
           <div class="hero-actions" aria-label="Primary actions">
-            <a class="button button-primary" href="#contact">Book a free consult</a>
-            <a class="button button-secondary" href="#fit-check">Try the fit check</a>
+            <a class="button button-primary" href="#contact"
+              >Book a free consult</a
+            >
+            <a class="button button-secondary" href="#fit-check"
+              >Try the fit check</a
+            >
           </div>
           <dl class="hero-stats" aria-label="Service highlights">
             <div>
@@ -106,111 +135,167 @@
         </div>
       </section>
 
-      <section class="section section-intro" id="offer" aria-labelledby="offer-title">
+      <section
+        class="section section-intro"
+        id="offer"
+        aria-labelledby="offer-title"
+      >
         <div class="section-grid">
           <div class="section-copy reveal">
             <p class="eyebrow">The offer</p>
-            <h2 id="offer-title">A <span class="phrase-effect effect-cleaner">cleaner</span> path than <span class="phrase-effect effect-renting">renting</span> your whole <span class="phrase-effect effect-web">web</span> presence.</h2>
+            <h2 id="offer-title">
+              A
+              <span class="phrase-effect effect-cleaner" data-text="cleaner"
+                >cleaner</span
+              >
+              path than
+              <span class="phrase-effect effect-renting">renting</span> your
+              whole <span class="phrase-effect effect-web">web</span> presence.
+            </h2>
             <p>
-              I build lean, professional websites for local businesses that need a clear online home: services, photos, reviews, contact forms, and the details customers look for before they call.
+              I build lean, professional websites for local businesses that need
+              a clear online home: services, photos, reviews, contact forms, and
+              the details customers look for before they call.
             </p>
           </div>
-          <div class="ownership-list reveal" aria-label="Website ownership benefits">
+          <div
+            class="ownership-list reveal"
+            aria-label="Website ownership benefits"
+          >
             <article data-tilt>
               <span aria-hidden="true">01</span>
               <h3>You own the important parts</h3>
-              <p>Your domain, content, analytics, hosting accounts, and source code can stay under your control.</p>
+              <p>
+                Your domain, content, analytics, hosting accounts, and source
+                code can stay under your control.
+              </p>
             </article>
             <article data-tilt>
               <span aria-hidden="true">02</span>
               <h3>Static sites can stay simple</h3>
-              <p>Brochure sites can launch without a required monthly developer payment. Future changes are available when needed.</p>
+              <p>
+                Brochure sites can launch without a required monthly developer
+                payment. Future changes are available when needed.
+              </p>
             </article>
             <article data-tilt>
               <span aria-hidden="true">03</span>
               <h3>Support is clear</h3>
-              <p>New sites include a workmanship warranty. Ongoing edits, maintenance, and dynamic features are scoped separately.</p>
+              <p>
+                New sites include a workmanship warranty. Ongoing edits,
+                maintenance, and dynamic features are scoped separately.
+              </p>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section services-section" aria-labelledby="services-title">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Built for the first impression</p>
-          <h2 id="services-title">Everything a local customer needs to <span class="text-pop">say yes</span>.</h2>
-        </div>
-        <div class="service-grid">
-          <article class="service-card reveal" data-tilt>
-            <div class="service-icon icon-fast" aria-hidden="true"></div>
-            <h3>Fast pages</h3>
-            <p>Lightweight HTML, CSS, and JavaScript tuned for quick loading and strong Lighthouse scores.</p>
-          </article>
-          <article class="service-card reveal" data-tilt>
-            <div class="service-icon icon-action" aria-hidden="true"></div>
-            <h3>Clear calls to action</h3>
-            <p>Phone, email, quote requests, directions, and service details arranged for customers who are ready to act.</p>
-          </article>
-          <article class="service-card reveal" data-tilt>
-            <div class="service-icon icon-launch" aria-hidden="true"></div>
-            <h3>Launch setup</h3>
-            <p>Domain, hosting, analytics, search basics, contact form routing, and deployment configuration handled with you.</p>
-          </article>
-          <article class="service-card reveal" data-tilt>
-            <div class="service-icon icon-portable" aria-hidden="true"></div>
-            <h3>Portable code</h3>
-            <p>Your website is not tied to a proprietary builder or one developer relationship.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="model-section" id="build-model" aria-labelledby="model-title" data-model-section>
-        <canvas class="model-canvas" data-model-canvas aria-hidden="true"></canvas>
+      <section
+        class="model-section"
+        id="build-model"
+        aria-labelledby="model-title"
+        data-model-section
+      >
+        <canvas
+          class="model-canvas"
+          data-model-canvas
+          aria-hidden="true"
+        ></canvas>
         <div class="model-shade" aria-hidden="true"></div>
         <div class="model-content reveal">
           <p class="eyebrow">Interactive build preview</p>
-          <h2 id="model-title">Custom sites should feel <span class="text-pop handmade-pop">handmade<span class="handmade-prints" aria-hidden="true"><span class="handmade-print"></span><span class="handmade-print"></span><span class="handmade-print"></span></span></span>, not templated.</h2>
+          <h2 id="model-title">
+            Custom sites should feel
+            <span class="text-pop handmade-pop"
+              >handmade<span class="handmade-prints" aria-hidden="true"
+                ><span class="handmade-print"></span
+                ><span class="handmade-print"></span
+                ><span class="handmade-print"></span></span></span
+            >, not templated.
+          </h2>
           <p>
-            The work is shaped around your business, then handed over in a way that keeps the domain, accounts, content, and code portable.
+            The work is shaped around your business, then handed over in a way
+            that keeps the domain, accounts, content, and code portable.
           </p>
         </div>
       </section>
 
-      <section class="section about-section" id="about" aria-labelledby="about-title">
+      <section
+        class="section about-section"
+        id="about"
+        aria-labelledby="about-title"
+      >
         <div class="about-grid">
           <div class="about-copy reveal">
             <p class="eyebrow">Who am I?</p>
-            <h2 id="about-title">Local roots, practical websites, and a soft spot for small businesses.</h2>
+            <h2 id="about-title">
+              Local roots, practical websites, and a soft spot for small
+              businesses.
+            </h2>
             <p>
-              I am Ryan, born and raised in Norwell, MA. I have six years of web development experience and currently work as a data engineer for Avidia Bank. I have always loved graphic design, tinkering with technology, and helping people make sense of the tools their business depends on.
+              I am Ryan, born and raised in Norwell, MA. I have six years of web
+              development experience and currently work as a data engineer for
+              Avidia Bank. I have always loved graphic design, tinkering with
+              technology, and helping people make sense of the technology they
+              depend on.
             </p>
             <p>
-              Developer For Hire is my way to support local small businesses with practical websites, honest technical guidance, and ownership that does not disappear into a black box.
+              Developer For Hire is my way to support local small businesses
+              with practical websites, honest technical guidance, and ownership
+              that does not disappear into a black box.
             </p>
           </div>
-          <div class="about-notes reveal" aria-label="Working style">
-            <article data-tilt>
-              <span>Local perspective</span>
-              <p>I know the South Shore small-business world, and I care about work that feels useful to the community around me.</p>
-            </article>
-            <article data-tilt>
-              <span>Design plus engineering</span>
-              <p>I like the visual polish, the technical details, and the quiet decisions that make a site fast, clear, and easy to own.</p>
-            </article>
-            <article data-tilt>
-              <span>Plain-English help</span>
-              <p>No mystery stack or vague platform talk. I explain what you need, what you do not, and what each choice means.</p>
-            </article>
+          <div class="about-side">
+            <figure class="about-photo reveal" data-tilt>
+              <img
+                src="assets/headshot.webp"
+                alt="Ryan, the developer behind Developer For Hire"
+                width="1328"
+                height="864"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>Ryan, Developer For Hire</figcaption>
+            </figure>
+            <div class="about-notes reveal" aria-label="Working style">
+              <article data-tilt>
+                <span>Local perspective</span>
+                <p>
+                  I know the South Shore small-business world, and I care about
+                  work that feels useful to the community around me.
+                </p>
+              </article>
+              <article data-tilt>
+                <span>Design plus engineering</span>
+                <p>
+                  I like the visual polish, the technical details, and the quiet
+                  decisions that make a site fast, clear, and easy to own.
+                </p>
+              </article>
+              <article data-tilt>
+                <span>Plain-English help</span>
+                <p>
+                  No mystery terminology or vague technical talk. I explain what
+                  you need, what you do not, and what each choice means.
+                </p>
+              </article>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="section fit-section" id="fit-check" aria-labelledby="fit-title">
+      <section
+        class="section fit-section"
+        id="fit-check"
+        aria-labelledby="fit-title"
+      >
         <div class="fit-copy reveal">
           <p class="eyebrow">Quick fit check</p>
           <h2 id="fit-title">See what kind of site you may need.</h2>
           <p>
-            Use the toggles to sketch your project. The estimate updates instantly, and the real scope gets nailed down in a free consultation.
+            Use the toggles to sketch your project. The estimate updates
+            instantly, and the real scope gets nailed down in a free
+            consultation.
           </p>
         </div>
 
@@ -220,15 +305,15 @@
             <div class="fit-options">
               <span class="fit-choice-slider" aria-hidden="true"></span>
               <label>
-                <input type="radio" name="pages" value="1" checked>
+                <input type="radio" name="pages" value="1" checked />
                 <span>One page</span>
               </label>
               <label>
-                <input type="radio" name="pages" value="5">
+                <input type="radio" name="pages" value="5" />
                 <span>Five pages</span>
               </label>
               <label>
-                <input type="radio" name="pages" value="10">
+                <input type="radio" name="pages" value="10" />
                 <span>Ten pages</span>
               </label>
             </div>
@@ -239,15 +324,15 @@
             <div class="fit-options">
               <span class="fit-choice-slider" aria-hidden="true"></span>
               <label>
-                <input type="radio" name="complexity" value="static" checked>
+                <input type="radio" name="complexity" value="static" checked />
                 <span>Inform customers</span>
               </label>
               <label>
-                <input type="radio" name="complexity" value="forms">
+                <input type="radio" name="complexity" value="forms" />
                 <span>Collect leads</span>
               </label>
               <label>
-                <input type="radio" name="complexity" value="dynamic">
+                <input type="radio" name="complexity" value="dynamic" />
                 <span>Run workflows</span>
               </label>
             </div>
@@ -264,55 +349,76 @@
       <section class="section process-section" aria-labelledby="process-title">
         <div class="section-heading reveal">
           <p class="eyebrow">Process</p>
-          <h2 id="process-title">From Facebook <span class="phrase-effect effect-message">message</span> to <span class="phrase-effect effect-live">live</span> website.</h2>
+          <h2 id="process-title">
+            From Facebook
+            <span class="phrase-effect effect-message">message</span> to
+            <span class="phrase-effect effect-live">live</span> website.
+          </h2>
         </div>
         <ol class="process-list">
           <li class="reveal">
             <span>01</span>
             <h3>Free consultation</h3>
-            <p>A 20-30 minute call to learn what you need, what assets you have, and whether the project should be static or dynamic.</p>
+            <p>
+              A 20-30 minute call to learn what you need, what assets you have,
+              and whether the project should be static or dynamic.
+            </p>
           </li>
           <li class="reveal">
             <span>02</span>
             <h3>Fixed scope</h3>
-            <p>You get a clear project price, payment milestones, timeline, and list of what is included before work begins.</p>
+            <p>
+              You get a clear project price, payment milestones, timeline, and
+              list of what is included before work begins.
+            </p>
           </li>
           <li class="reveal">
             <span>03</span>
             <h3>Build and launch</h3>
-            <p>The site is built, reviewed, launched, and handed over with the accounts and source code arranged for long-term ownership.</p>
+            <p>
+              The site is built, reviewed, launched, and handed over with the
+              accounts and source code arranged for long-term ownership.
+            </p>
           </li>
         </ol>
       </section>
 
-      <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+      <section
+        class="section contact-section"
+        id="contact"
+        aria-labelledby="contact-title"
+      >
         <div class="contact-panel reveal">
           <div>
             <p class="eyebrow">Start local</p>
             <h2 id="contact-title">Tell me what your business needs online.</h2>
             <p>
-              Send a few details and I will reply with next steps for a free consultation. This form opens your email app so you can review the message before sending.
+              Send a few details and I will reply with next steps for a free
+              consultation. This form opens your email app so you can review the
+              message before sending.
             </p>
           </div>
 
           <form class="contact-form" data-contact-form>
             <label>
               <span>Name</span>
-              <input name="name" autocomplete="name" required>
+              <input name="name" autocomplete="name" required />
             </label>
             <label>
               <span>Business</span>
-              <input name="business" autocomplete="organization" required>
+              <input name="business" autocomplete="organization" required />
             </label>
             <label>
               <span>Email</span>
-              <input type="email" name="email" autocomplete="email" required>
+              <input type="email" name="email" autocomplete="email" required />
             </label>
             <label>
               <span>What do you need?</span>
               <textarea name="message" rows="4" required></textarea>
             </label>
-            <button class="button button-primary" type="submit">Prepare email</button>
+            <button class="button button-primary" type="submit">
+              Prepare email
+            </button>
             <p class="form-note" data-form-note aria-live="polite"></p>
           </form>
         </div>
