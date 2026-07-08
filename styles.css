@@ -20,26 +20,47 @@
   --hero-glow-bg:
     radial-gradient(
       circle at var(--cursor-x, 72%) var(--cursor-y, 34%),
-      rgba(15, 118, 110, 0.2),
+      rgba(15, 118, 110, 0.16),
       transparent 20rem
     ),
-    linear-gradient(90deg, rgba(251, 250, 247, 0.9), rgba(251, 250, 247, 0.54));
+    linear-gradient(90deg, rgba(251, 250, 247, 0.72), rgba(251, 250, 247, 0.16));
   --hero-fade: linear-gradient(to top, var(--paper), rgba(251, 250, 247, 0));
   --hero-title: #101820;
   --hero-muted: #334155;
   --hero-eyebrow: #8a5f00;
+  --developer-hover-base: #101820;
+  --hero-pop-hover: #0f766e;
+  --hero-copy-shadow:
+    0 1px 0 rgba(251, 250, 247, 0.95),
+    0 -1px 0 rgba(251, 250, 247, 0.95),
+    1px 0 0 rgba(251, 250, 247, 0.9),
+    -1px 0 0 rgba(251, 250, 247, 0.9),
+    0 0 0.8rem rgba(251, 250, 247, 0.94);
+  --hero-canvas-grid: rgba(16, 24, 32, 0.42);
+  --hero-canvas-panel-bg: rgba(16, 24, 32, 0.055);
+  --hero-canvas-panel-border: rgba(16, 24, 32, 0.3);
+  --hero-canvas-line: rgba(16, 24, 32, 0.58);
+  --hero-canvas-line-soft: rgba(16, 24, 32, 0.38);
+  --hero-canvas-chip-bg: rgba(16, 24, 32, 0.16);
   --hero-card-bg: rgba(255, 255, 255, 0.68);
   --hero-card-border: rgba(16, 24, 32, 0.2);
   --hero-stat-label: #64748b;
   --hero-secondary-bg: rgba(16, 24, 32, 0.04);
   --hero-secondary-hover: rgba(16, 24, 32, 0.1);
   --hero-secondary-border: rgba(16, 24, 32, 0.46);
+  --word-for-hover: #7c2d12;
+  --message-hover: #0f766e;
+  --message-bubble-bg: #fbfaf7;
+  --message-bubble-border: rgba(15, 118, 110, 0.86);
+  --live-hover: #166534;
+  --handprint-filter: sepia(1) saturate(1.8) hue-rotate(330deg) brightness(0.66);
+  --handprint-hover-opacity: 0.42;
   --model-bg:
     radial-gradient(circle at 76% 34%, rgba(234, 179, 8, 0.22), transparent 24rem),
     linear-gradient(135deg, #f8f3df, #e8f3ef 54%, #fbfaf7);
   --model-shade:
-    linear-gradient(90deg, rgba(251, 250, 247, 0.92), rgba(251, 250, 247, 0.5) 46%, rgba(251, 250, 247, 0.1)),
-    linear-gradient(to top, rgba(251, 250, 247, 0.62), rgba(251, 250, 247, 0));
+    linear-gradient(90deg, rgba(251, 250, 247, 0.86), rgba(251, 250, 247, 0.28) 38%, rgba(251, 250, 247, 0) 62%),
+    linear-gradient(to top, rgba(251, 250, 247, 0.34), rgba(251, 250, 247, 0));
   --model-title: #101820;
   --model-text: #334155;
   --model-eyebrow: #8a5f00;
@@ -98,12 +119,28 @@
   --hero-title: #fff;
   --hero-muted: #f8fafc;
   --hero-eyebrow: #fde68a;
+  --developer-hover-base: #f4fff1;
+  --hero-pop-hover: #fff7d6;
+  --hero-copy-shadow: none;
+  --hero-canvas-grid: rgba(255, 255, 255, 0.35);
+  --hero-canvas-panel-bg: rgba(255, 255, 255, 0.13);
+  --hero-canvas-panel-border: rgba(255, 255, 255, 0.26);
+  --hero-canvas-line: rgba(255, 255, 255, 0.78);
+  --hero-canvas-line-soft: rgba(255, 255, 255, 0.55);
+  --hero-canvas-chip-bg: rgba(255, 255, 255, 0.22);
   --hero-card-bg: rgba(255, 255, 255, 0.08);
   --hero-card-border: rgba(255, 255, 255, 0.28);
   --hero-stat-label: #cbd5e1;
   --hero-secondary-bg: rgba(255, 255, 255, 0.08);
   --hero-secondary-hover: rgba(255, 255, 255, 0.18);
   --hero-secondary-border: rgba(255, 255, 255, 0.62);
+  --word-for-hover: #fff8d7;
+  --message-hover: #ccfbf1;
+  --message-bubble-bg: var(--charcoal);
+  --message-bubble-border: rgba(94, 234, 212, 0.8);
+  --live-hover: #bbf7d0;
+  --handprint-filter: invert(1) sepia(1) saturate(1.4) hue-rotate(358deg);
+  --handprint-hover-opacity: 0.34;
   --model-bg:
     radial-gradient(circle at 78% 38%, rgba(234, 179, 8, 0.26), transparent 24rem),
     linear-gradient(135deg, #101820, #122a30 52%, #0f172a);
@@ -536,11 +573,14 @@ h3 {
 }
 
 .hero-lede {
+  position: relative;
+  z-index: 1;
   max-width: 46rem;
   margin: 1.35rem 0 0;
   color: var(--hero-muted);
   font-size: clamp(1.15rem, 2.3vw, 1.55rem);
   line-height: 1.45;
+  text-shadow: var(--hero-copy-shadow);
 }
 
 .hover-word,
@@ -609,7 +649,7 @@ h3 {
 }
 
 .word-developer:hover {
-  color: var(--hero-title);
+  color: var(--developer-hover-base);
   text-shadow: 0 0 0.045em rgba(255, 255, 255, 0.2);
 }
 
@@ -768,7 +808,7 @@ h3 {
 }
 
 .word-for:hover {
-  color: #fff8d7;
+  color: var(--word-for-hover);
   transform: rotate(-1deg) translateY(-0.04em);
 }
 
@@ -872,7 +912,7 @@ h3 {
 }
 
 .hero .text-pop:hover {
-  color: #fff7d6;
+  color: var(--hero-pop-hover);
 }
 
 .phrase-effect {
@@ -1163,10 +1203,10 @@ h3 {
 }
 
 .effect-message::before {
-  inset: 0.02em -0.13em -0.03em;
+  inset: 0.12em -0.08em 0.05em;
   z-index: -1;
-  border: 0.045em solid rgba(94, 234, 212, 0.8);
-  border-radius: 0.22em;
+  border: 0.04em solid var(--message-bubble-border);
+  border-radius: 0.16em;
   opacity: 0;
   transform: scale(0.92);
   transition:
@@ -1175,14 +1215,14 @@ h3 {
 }
 
 .effect-message::after {
-  left: 0.58em;
-  bottom: -0.18em;
+  left: 0.48em;
+  bottom: -0.08em;
   z-index: -1;
-  width: 0.28em;
-  height: 0.28em;
-  border-right: 0.045em solid rgba(94, 234, 212, 0.8);
-  border-bottom: 0.045em solid rgba(94, 234, 212, 0.8);
-  background: var(--charcoal);
+  width: 0.2em;
+  height: 0.2em;
+  border-right: 0.04em solid var(--message-bubble-border);
+  border-bottom: 0.04em solid var(--message-bubble-border);
+  background: transparent;
   opacity: 0;
   transform: rotate(45deg) scale(0.64);
   transition:
@@ -1191,7 +1231,7 @@ h3 {
 }
 
 .effect-message:hover {
-  color: #ccfbf1;
+  color: var(--message-hover);
   transform: translateY(-0.04em);
 }
 
@@ -1230,7 +1270,7 @@ h3 {
 }
 
 .effect-live:hover {
-  color: #bbf7d0;
+  color: var(--live-hover);
   text-shadow: 0 0 24px rgba(34, 197, 94, 0.4);
 }
 
@@ -1525,7 +1565,7 @@ h3 {
   aspect-ratio: 1;
   background: url("assets/handprint-hover.webp") center / contain no-repeat;
   opacity: 0;
-  filter: invert(1) sepia(1) saturate(1.4) hue-rotate(358deg);
+  filter: var(--handprint-filter);
   transform: translate(-50%, -50%) rotate(var(--print-rotation))
     scale(calc(var(--print-scale) * 0.54));
   transition:
@@ -1556,7 +1596,7 @@ h3 {
 }
 
 .handmade-pop:hover .handmade-print {
-  opacity: 0.34;
+  opacity: var(--handprint-hover-opacity);
   transform: translate(-50%, -50%) rotate(var(--print-rotation))
     scale(var(--print-scale));
 }
@@ -2129,14 +2169,7 @@ h3 {
   }
 
   .model-shade {
-    background:
-      linear-gradient(
-        to top,
-        rgba(16, 24, 32, 0.94),
-        rgba(16, 24, 32, 0.24) 72%,
-        rgba(16, 24, 32, 0.04)
-      ),
-      linear-gradient(90deg, rgba(16, 24, 32, 0.2), rgba(16, 24, 32, 0.1));
+    background: var(--model-shade);
   }
 
   h1 {

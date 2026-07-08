@@ -533,9 +533,15 @@
   const panels = [
     { x: 0.58, y: 0.16, w: 0.26, h: 0.2, color: "#eab308", speed: 0.42 },
     { x: 0.73, y: 0.44, w: 0.2, h: 0.16, color: "#0f766e", speed: 0.34 },
-    { x: 0.49, y: 0.66, w: 0.28, h: 0.18, color: "#be3455", speed: 0.28 },
+    { x: 0.57, y: 0.68, w: 0.26, h: 0.18, color: "#be3455", speed: 0.28 },
     { x: 0.82, y: 0.72, w: 0.16, h: 0.14, color: "#2563eb", speed: 0.36 }
   ];
+
+  const cssColor = (name, fallback) => {
+    if (!hero) return fallback;
+    const value = getComputedStyle(hero).getPropertyValue(name).trim();
+    return value || fallback;
+  };
 
   function resizeCanvas() {
     const rect = canvas.getBoundingClientRect();
@@ -570,9 +576,9 @@
     context.save();
     context.globalAlpha = 0.82;
     roundedRect(x, y, w, h, 8);
-    context.fillStyle = "rgba(255, 255, 255, 0.13)";
+    context.fillStyle = cssColor("--hero-canvas-panel-bg", "rgba(255, 255, 255, 0.13)");
     context.fill();
-    context.strokeStyle = "rgba(255, 255, 255, 0.26)";
+    context.strokeStyle = cssColor("--hero-canvas-panel-border", "rgba(255, 255, 255, 0.26)");
     context.lineWidth = 1;
     context.stroke();
 
@@ -580,15 +586,16 @@
     roundedRect(x + 14, y + 14, w * 0.32, 9, 5);
     context.fill();
 
-    context.fillStyle = "rgba(255, 255, 255, 0.78)";
+    context.fillStyle = cssColor("--hero-canvas-line", "rgba(255, 255, 255, 0.78)");
     roundedRect(x + 14, y + 36, w * 0.7, 8, 4);
     context.fill();
     context.globalAlpha = 0.55;
+    context.fillStyle = cssColor("--hero-canvas-line-soft", "rgba(255, 255, 255, 0.55)");
     roundedRect(x + 14, y + 55, w * 0.48, 8, 4);
     context.fill();
 
     context.globalAlpha = 0.64;
-    context.fillStyle = "rgba(255, 255, 255, 0.22)";
+    context.fillStyle = cssColor("--hero-canvas-chip-bg", "rgba(255, 255, 255, 0.22)");
     const barY = y + h - 24;
     for (let i = 0; i < 4; i += 1) {
       roundedRect(x + 14 + i * 36, barY, 24, 8 + ((i + index) % 3) * 7, 4);
@@ -605,7 +612,7 @@
     const gridSize = width < 720 ? 56 : 72;
     context.save();
     context.globalAlpha = 0.18;
-    context.strokeStyle = "rgba(255, 255, 255, 0.35)";
+    context.strokeStyle = cssColor("--hero-canvas-grid", "rgba(255, 255, 255, 0.35)");
     context.lineWidth = 1;
     for (let x = (time * 8) % gridSize; x < width; x += gridSize) {
       context.beginPath();

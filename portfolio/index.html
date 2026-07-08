@@ -8,29 +8,74 @@
       name="description"
       content="A small set of fictional example pages showing different styles for local small-business websites."
     />
+    <meta name="theme-color" content="#fbfaf7" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <script>
+      try {
+        const savedTheme = localStorage.getItem("dfh-theme");
+        const systemTheme = matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+        const theme = savedTheme || systemTheme;
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+        document
+          .querySelector('meta[name="theme-color"]')
+          ?.setAttribute("content", theme === "dark" ? "#0b1117" : "#fbfaf7");
+      } catch (error) {
+        document.documentElement.dataset.theme = "light";
+      }
+    </script>
     <link rel="stylesheet" href="styles.css" />
     <script src="../page-transition.js" defer></script>
+    <script src="../script.js" defer></script>
   </head>
   <body class="portfolio-index">
-    <header class="demo-header">
-      <div class="demo-shell">
-        <a class="demo-logo" href="../index.html">
-          <span class="demo-logo-mark">DFH</span>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <nav class="nav-shell" aria-label="Main navigation">
+        <a
+          class="brand"
+          href="../index.html#top"
+          aria-label="DFH Developer For Hire home"
+        >
+          <span class="brand-mark" aria-hidden="true">DFH</span>
           <span>Developer For Hire</span>
         </a>
-        <nav class="demo-nav" aria-label="Example navigation">
-          <a href="../index.html">Main site</a>
-          <a href="bakery.html">Bakery</a>
-          <a href="repair.html">Repair</a>
-          <a href="garden.html">Garden</a>
-          <a href="wellness.html">Wellness</a>
-          <a href="records.html">Records</a>
-        </nav>
-      </div>
+        <div class="nav-actions">
+          <button
+            class="theme-toggle"
+            type="button"
+            aria-label="Use dark theme"
+            aria-pressed="false"
+            data-theme-toggle
+          >
+            <span class="theme-toggle-icon" aria-hidden="true"></span>
+          </button>
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="site-menu"
+            data-nav-toggle
+          >
+            <span class="nav-toggle-lines" aria-hidden="true"></span>
+            <span class="sr-only">Open menu</span>
+          </button>
+        </div>
+        <div class="site-menu" id="site-menu" data-menu>
+          <a href="../index.html#offer">Offer</a>
+          <a href="../index.html#build-model">Preview</a>
+          <a href="index.html">Examples</a>
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#fit-check">Fit check</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </nav>
     </header>
 
-    <main class="demo-shell">
+    <main class="demo-shell" id="main">
       <section class="index-hero">
         <p class="kicker">Example pages</p>
         <h1>Simple sites, different personalities.</h1>

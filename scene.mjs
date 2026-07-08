@@ -151,10 +151,10 @@ function createModelScene(THREE) {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
-    camera.position.x = width < 760 ? 0 : -0.35;
+    camera.position.x = width < 760 ? 0 : -0.62;
     camera.position.z = width < 760 ? 8.4 : 7.0;
     group.scale.setScalar(width < 760 ? 0.62 : 1.08);
-    baseX = width < 760 ? 1.15 : 0;
+    baseX = width < 760 ? 1.15 : 1.55;
     baseY = width < 760 ? 1.62 : 0;
     camera.updateProjectionMatrix();
     renderer.render(scene, camera);
